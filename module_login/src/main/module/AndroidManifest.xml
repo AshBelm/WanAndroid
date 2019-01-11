@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mcmo.z.module_login" >
+    <application>
+        <activity android:name=".LoginActivity_MLogin"/>
+    </application>
+</manifest>

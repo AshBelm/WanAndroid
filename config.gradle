@@ -1,0 +1,62 @@
+/**
+ * 一般情况下key的类型都是字符串，在声明map的时候可以忽略字符串标记（单引号或者双引号）：assert ["a":1] == [a:1],如果key没有包含特殊字符（需要符合有效表示规则）而且不是groovy的关键字，那么允许通过这种便利的方式进行声明。
+ *
+ * 这种方式也有不便的地方，例如，本地变量的内容被用作key。假如有一个本地变量x，它的内容为’a’，由于[x:1]等价于[‘x’:1],那么如何保证它等于[‘a’:1]呢？通过把把符号放在圆括号中，强制让groovy将符号看做一个表达式：
+ * def x = 'a'
+ * assert [x:1] == ['x':1]
+ * assert ['(x)'] == ['x':1]
+ * ---------------------
+ * 作者：zhaodongxx
+ * 来源：CSDN
+ * 原文：https://blog.csdn.net/dora_310/article/details/52877750
+ * 版权声明：本文为博主原创文章，转载请附上博文链接！
+ */
+
+ext {
+    compileSdkVersion = 28
+    minSdkVersion = 16
+    targetSdkVersion = 26
+    versions = [
+            appcompatVersion       : "28.0.0",
+            constraintLayoutVersion: "1.1.3",
+            designVersion          : "28.0.0",
+            junitVersion           : "4.12",
+            testVersion            : "1.0.2",
+            espressoVersion        : "3.0.2",
+            arouterVersion         : "1.4.1",
+            arouterComilperVersion : "1.2.2",
+            rxjavaVersion          : "2.2.4",
+            rxandroidVersion       : "2.1.0",
+            okhttpVersion          : "3.12.0",
+            retrofitVersion        : "2.5.0",
+            retrofitGsonVersion    : "2.2.0",
+            glideVersion           : "4.7.1",
+            wenldBannerVersion     : "2.0.2",
+            lifecycleVersion :"1.1.1"
+    ]
+    dependencies = [
+            "appcompat_v7"     : "com.android.support:appcompat-v7:${versions["appcompatVersion"]}",
+            "constraint_layout": "com.android.support.constraint:constraint-layout:${versions["constraintLayoutVersion"]}",
+            "design"           : "com.android.support:design:${versions["designVersion"]}",
+            "lifecycle":"android.arch.lifecycle:extensions:${versions["lifecycleVersion"]}",
+            //测试相关
+            "junit"            : "junit:junit:${versions["junitVersion"]}",
+            "test"             : "com.android.support.test:runner:${versions["testVersion"]}",
+            "espresso"         : "com.android.support.test.espresso:espresso-core:${versions["espressoVersion"]}",
+            //Arouter
+            "arouter"          : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
+            "arouterComilper"  : "com.alibaba:arouter-compiler:${versions["arouterComilperVersion"]}",
+            //Rx
+            "rxjava"           : "io.reactivex.rxjava2:rxjava:${versions["rxjavaVersion"]}",
+            "rxandroid"        : "io.reactivex.rxjava2:rxandroid:${versions["rxandroidVersion"]}",
+            //网络请求库
+            "okhttp"           : "com.squareup.okhttp3:okhttp:${versions["okhttpVersion"]}",
+            "retrofit"         : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
+            "retrofitGson"     : "com.squareup.retrofit2:converter-gson:${versions["retrofitGsonVersion"]}",
+            //图片加载
+            "glide"            : "com.github.bumptech.glide:glide:${versions["glideVersion"]}",
+            "glideCompiler"    : "com.github.bumptech.glide:compiler:${versions["glideVersion"]}",
+            //第三方控件
+            "wenldBanner"      : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}"
+    ]
+}

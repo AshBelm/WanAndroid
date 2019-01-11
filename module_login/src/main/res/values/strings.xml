@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">module_login</string>
+    <string name="mlogin_name">haha</string>
+    <string name="mlogin_register">注册</string>
+    <string name="mlogin_login">登陆</string>
+    <string name="mlogin_username_hint">用户名</string>
+    <string name="mlogin_username_input_hint">请输入用户名</string>
+    <string name="mlogin_password_hint">密码</string>
+    <string name="mlogin_password_input_hint">输入密码</string>
+    <string name="mlogin_repassword_input_hint">再次输入密码</string>
+</resources>

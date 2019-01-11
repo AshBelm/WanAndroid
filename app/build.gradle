@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.mcmo.z.wanandroid"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 3
+        versionName "1.2.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+//        ndk{
+//            abiFilters 'armeabi'
+//        }
+    }
+    signingConfigs{
+        release{
+            keyAlias 'ash'
+            keyPassword 'zw27516425'
+            storeFile file('E:/Store/keystore/wanandroid.jks')
+            storePassword 'zw27516425'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    flavorDimensions "product"
+//    productFlavors{
+//        mi{
+//            dimension "product"
+////            versionCode 1
+//        }
+//        oppo{
+//            dimension "product"
+////            versionCode 2
+//        }
+//        samsung{
+//            dimension "product"
+////            versionCode 3
+//        }
+//        google{
+//            dimension "product"
+////            versionCode 4
+//        }
+//        anzhi{
+//            dimension "product"
+////            versionCode 5
+//        }
+//        wandoujia{
+//            dimension "product"
+////            versionCode 6
+//        }
+//    }
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':commonlibrary')
+    annotationProcessor rootProject.ext.dependencies["arouterComilper"]
+    if(isLoginModule.toBoolean()){
+        implementation project(':module_login')
+    }
+    testImplementation rootProject.ext.dependencies["junit"]
+
+//    implementation "com.android.support:multidex:1.0.1" // 多dex配置
+}
