@@ -46,4 +46,8 @@
             android:layout_height="wrap_content"
             android:text="@string/mlogin_register"/>
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"></android.support.v7.widget.RecyclerView>
 </FrameLayout>

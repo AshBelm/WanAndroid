@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcmo.z.commonlibrary.busniess.BaseUserInfo;
@@ -99,5 +101,40 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+        RecyclerView lv = view.findViewById(R.id.lv);
+        lv.setLayoutManager(new LinearLayoutManager(getContext()));
+        lv.setAdapter(new LvAdapter());
+
+    }
+    private class LvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+        @NonNull
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            Button button = new Button(viewGroup.getContext());
+            return new MyVH(button);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
+            Button btn = (Button) viewHolder.itemView;
+            btn.setText(i+"Button");
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ToastUtil.showToastUtil(getContext(),i+"");
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return 10;
+        }
+    }
+    private class MyVH extends RecyclerView.ViewHolder{
+        public MyVH(@NonNull View itemView) {
+            super(itemView);
+        }
     }
 }

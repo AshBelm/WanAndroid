@@ -32,7 +32,8 @@ ext {
             retrofitGsonVersion    : "2.2.0",
             glideVersion           : "4.7.1",
             wenldBannerVersion     : "2.0.2",
-            lifecycleVersion :"1.1.1"
+            lifecycleVersion :"1.1.1",
+            testRuleVersion:"1.0.2"
     ]
     dependencies = [
             "appcompat_v7"     : "com.android.support:appcompat-v7:${versions["appcompatVersion"]}",
@@ -43,6 +44,7 @@ ext {
             "junit"            : "junit:junit:${versions["junitVersion"]}",
             "test"             : "com.android.support.test:runner:${versions["testVersion"]}",
             "espresso"         : "com.android.support.test.espresso:espresso-core:${versions["espressoVersion"]}",
+            "test_rule":"com.android.support.test:rules:${versions["testRuleVersion"]}",
             //Arouter
             "arouter"          : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
             "arouterComilper"  : "com.alibaba:arouter-compiler:${versions["arouterComilperVersion"]}",
