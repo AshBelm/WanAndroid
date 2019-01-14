@@ -3,7 +3,7 @@ package com.mcmo.z.commonlibrary.mvp;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
-public abstract class AbsPresenter<T extends AbsView> {
+public abstract class AbsPresenter<T extends IView> {
     private T absView ;
 
     public void setView(T absView) {
@@ -18,4 +18,5 @@ public abstract class AbsPresenter<T extends AbsView> {
     }
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState){}
     public void onRestoreInstanceState(Bundle savedInstanceState){}
+
 }

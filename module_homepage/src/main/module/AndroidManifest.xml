@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mcmo.z.module_homepage" >
+    <application>
+        <activity android:name=".HomePageActivity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>

@@ -32,33 +32,37 @@ ext {
             retrofitGsonVersion    : "2.2.0",
             glideVersion           : "4.7.1",
             wenldBannerVersion     : "2.0.2",
-            lifecycleVersion :"1.1.1",
-            testRuleVersion:"1.0.2"
+            lifecycleVersion       : "1.1.1",
+            testRuleVersion        : "1.0.2",
+            butterKnifeVersion     : "8.8.1"
     ]
     dependencies = [
-            "appcompat_v7"     : "com.android.support:appcompat-v7:${versions["appcompatVersion"]}",
-            "constraint_layout": "com.android.support.constraint:constraint-layout:${versions["constraintLayoutVersion"]}",
-            "design"           : "com.android.support:design:${versions["designVersion"]}",
-            "lifecycle":"android.arch.lifecycle:extensions:${versions["lifecycleVersion"]}",
+            "appcompat_v7"       : "com.android.support:appcompat-v7:${versions["appcompatVersion"]}",
+            "constraint_layout"  : "com.android.support.constraint:constraint-layout:${versions["constraintLayoutVersion"]}",
+            "design"             : "com.android.support:design:${versions["designVersion"]}",
+            "lifecycle"          : "android.arch.lifecycle:extensions:${versions["lifecycleVersion"]}",
             //测试相关
-            "junit"            : "junit:junit:${versions["junitVersion"]}",
-            "test"             : "com.android.support.test:runner:${versions["testVersion"]}",
-            "espresso"         : "com.android.support.test.espresso:espresso-core:${versions["espressoVersion"]}",
-            "test_rule":"com.android.support.test:rules:${versions["testRuleVersion"]}",
+            "junit"              : "junit:junit:${versions["junitVersion"]}",
+            "test"               : "com.android.support.test:runner:${versions["testVersion"]}",
+            "espresso"           : "com.android.support.test.espresso:espresso-core:${versions["espressoVersion"]}",
+            "test_rule"          : "com.android.support.test:rules:${versions["testRuleVersion"]}",
             //Arouter
-            "arouter"          : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
-            "arouterComilper"  : "com.alibaba:arouter-compiler:${versions["arouterComilperVersion"]}",
+            "arouter"            : "com.alibaba:arouter-api:${versions["arouterVersion"]}",
+            "arouterComilper"    : "com.alibaba:arouter-compiler:${versions["arouterComilperVersion"]}",
             //Rx
-            "rxjava"           : "io.reactivex.rxjava2:rxjava:${versions["rxjavaVersion"]}",
-            "rxandroid"        : "io.reactivex.rxjava2:rxandroid:${versions["rxandroidVersion"]}",
+            "rxjava"             : "io.reactivex.rxjava2:rxjava:${versions["rxjavaVersion"]}",
+            "rxandroid"          : "io.reactivex.rxjava2:rxandroid:${versions["rxandroidVersion"]}",
             //网络请求库
-            "okhttp"           : "com.squareup.okhttp3:okhttp:${versions["okhttpVersion"]}",
-            "retrofit"         : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
-            "retrofitGson"     : "com.squareup.retrofit2:converter-gson:${versions["retrofitGsonVersion"]}",
+            "okhttp"             : "com.squareup.okhttp3:okhttp:${versions["okhttpVersion"]}",
+            "retrofit"           : "com.squareup.retrofit2:retrofit:${versions["retrofitVersion"]}",
+            "retrofitGson"       : "com.squareup.retrofit2:converter-gson:${versions["retrofitGsonVersion"]}",
             //图片加载
-            "glide"            : "com.github.bumptech.glide:glide:${versions["glideVersion"]}",
-            "glideCompiler"    : "com.github.bumptech.glide:compiler:${versions["glideVersion"]}",
+            "glide"              : "com.github.bumptech.glide:glide:${versions["glideVersion"]}",
+            "glideCompiler"      : "com.github.bumptech.glide:compiler:${versions["glideVersion"]}",
+            //ButterKnife
+            "butterKnife"        : "com.jakewharton:butterknife:${versions["butterKnifeVersion"]}",
+            "butterKnifeCompiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}",
             //第三方控件
-            "wenldBanner"      : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}"
+            "wenldBanner"        : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}"
     ]
 }
