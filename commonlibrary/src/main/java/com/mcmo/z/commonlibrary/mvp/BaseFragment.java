@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment<T extends AbsFragmentView> extends Fragment {
     private T iView;
-    private AbsPresenter<T> iPresenter;
-    public abstract AbsPresenter<T> providerPresenter();
+    private AbsFragmentPresenter<T> iPresenter;
+    public abstract AbsFragmentPresenter<T> providerPresenter();
     public abstract T providerView();
 
     public T getIView() {
         return iView;
     }
 
-    public AbsPresenter<T> getIPresenter() {
+    public AbsFragmentPresenter<T> getIPresenter() {
         return iPresenter;
     }
     @Override
@@ -49,6 +49,7 @@ public abstract class BaseFragment<T extends AbsFragmentView> extends Fragment {
         iView = providerView();
         iView.setFragment(this);
         iPresenter = providerPresenter();
+        iPresenter.setFragment(this);
         iPresenter.setView(iView);
     }
 }

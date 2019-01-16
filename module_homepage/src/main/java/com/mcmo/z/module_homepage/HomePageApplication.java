@@ -1,5 +1,7 @@
 package com.mcmo.z.module_homepage;
 
+import android.os.StrictMode;
+
 import com.mcmo.z.commonlibrary.base.BaseApplication;
 
 public class HomePageApplication extends BaseApplication {
@@ -7,4 +9,6 @@ public class HomePageApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
     }
+
+
 }

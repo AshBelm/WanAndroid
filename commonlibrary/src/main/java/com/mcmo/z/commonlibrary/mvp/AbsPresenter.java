@@ -1,7 +1,6 @@
 package com.mcmo.z.commonlibrary.mvp;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.content.Context;
 
 public abstract class AbsPresenter<T extends IView> {
     private T absView ;
@@ -13,10 +12,7 @@ public abstract class AbsPresenter<T extends IView> {
     protected T getView(){
         return absView;
     }
-    public void initData(){
-
-    }
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState){}
-    public void onRestoreInstanceState(Bundle savedInstanceState){}
+    public abstract Context getContext();
+    public void initData(){}
 
 }

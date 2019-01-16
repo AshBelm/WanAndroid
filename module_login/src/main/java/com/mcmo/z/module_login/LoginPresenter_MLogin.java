@@ -1,8 +1,8 @@
 package com.mcmo.z.module_login;
 
-import com.mcmo.z.commonlibrary.mvp.AbsPresenter;
+import com.mcmo.z.commonlibrary.mvp.AbsActivityPresenter;
 
-public class LoginPresenter_MLogin extends AbsPresenter<LoginView_MLogin> {
+public class LoginPresenter_MLogin extends AbsActivityPresenter<LoginView_MLogin> {
     private static final String TAG = "LoginPresenter_MLogin";
     @Override
     public void initData() {

@@ -7,7 +7,7 @@ public class ArticleData {
     public String author;
     public int chapterId;
     public String chapterName;
-    public boolean collect;
+    public boolean collect;//收藏
     public int courseId;
     public String desc;
     public String envelopePic;
