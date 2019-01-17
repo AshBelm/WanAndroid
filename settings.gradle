@@ -1,1 +1,1 @@
-include ':app', ':commonlibrary', ':module_login', ':interfacelibrary', ':module_homepage'
+include ':app', ':commonlibrary', ':module_login', ':interfacelibrary', ':module_homepage', ':module_collect'

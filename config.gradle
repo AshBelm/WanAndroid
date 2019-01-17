@@ -16,6 +16,8 @@ ext {
     compileSdkVersion = 28
     minSdkVersion = 16
     targetSdkVersion = 26
+    applicationId = "com.mcmo.z.wanandroid"
+
     versions = [
             appcompatVersion       : "28.0.0",
             constraintLayoutVersion: "1.1.3",
@@ -66,4 +68,43 @@ ext {
             "wenldBanner"        : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}",
             "refreshView"        : "com.zt.maven.widget:refreshview:1.0.0"
     ]
+    //利用闭包来设置每个module共性的设置
+    setDefaultAndroidConfig ={ isModule,extension ->
+        extension.compileSdkVersion rootProject.ext.compileSdkVersion
+        extension.defaultConfig{
+            if(!isModule){
+                applicationId "${rootProject.ext.applicationId}.${extension.project.getName()}"
+            }
+            minSdkVersion rootProject.ext.minSdkVersion
+            targetSdkVersion rootProject.ext.targetSdkVersion
+
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: extension.project.getName()]
+                }
+            }
+        }
+        extension.sourceSets{
+            main{
+                if(isModule){
+                    manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                }else{
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+    }
+
+    setDefultDependencies={ extension ->
+        extension.implementation project(':commonlibrary')
+
+        extension.annotationProcessor rootProject.ext.dependencies["arouterComilper"]
+        extension.annotationProcessor rootProject.ext.dependencies["butterKnifeCompiler"]
+
+        extension.testImplementation 'junit:junit:4.12'
+        extension.androidTestImplementation 'com.android.support.test:runner:1.0.2'
+        extension.androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    }
 }
