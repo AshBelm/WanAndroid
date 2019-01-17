@@ -7,12 +7,11 @@ if(isHomeModule.toBoolean()){
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-
-
     defaultConfig {
         if(!isLoginModule.toBoolean()){
             applicationId "com.mcmo.z.wanandroid.module_homepage"
         }
+        resourcePrefix "mhome_"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

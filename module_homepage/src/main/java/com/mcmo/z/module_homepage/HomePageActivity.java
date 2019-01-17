@@ -1,6 +1,7 @@
 package com.mcmo.z.module_homepage;
 
 import android.os.Bundle;
+import android.os.Trace;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -35,7 +36,6 @@ public class HomePageActivity extends BaseActivity<HomePageView> {
         changeFragment(R.id.fragment_container,TAG_ARTICLELIST);
 //        Fragment fragment = (Fragment) ARouter.getInstance().build(RouteCons.Home.ARTICLE_LIST_FRAGMENT).navigation();
 //        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fragment,"articleList").commitAllowingStateLoss();
-
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.mcmo.z.module_homepage.view;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleH
     @NonNull
     @Override
     public ArticleHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ArticleHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_acticle, viewGroup, false));
+        return new ArticleHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.mhome_item_acticle, viewGroup, false));
     }
 
     @Override
@@ -76,7 +77,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleH
         }
 
         public void setCollect(boolean collected) {
-            iv_collect.setImageResource(collected ? R.drawable.ic_favorite_black_24dp : R.drawable.ic_favorite_border_black_24dp);
+            iv_collect.setImageResource(collected ? R.drawable.mhome_ic_favorite_black_24dp : R.drawable.mhome_ic_favorite_border_black_24dp);
         }
     }
     public interface OnItemClickListener{

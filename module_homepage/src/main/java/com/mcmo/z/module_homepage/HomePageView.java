@@ -8,7 +8,7 @@ import com.mcmo.z.commonlibrary.mvp.AbsActivityView;
 public class HomePageView extends AbsActivityView {
     @Override
     public int getLayoutId() {
-        return R.layout.activity_homepage;
+        return R.layout.mhome_activity_homepage;
     }
 
     @Override

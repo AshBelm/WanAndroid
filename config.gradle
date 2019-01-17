@@ -63,6 +63,7 @@ ext {
             "butterKnife"        : "com.jakewharton:butterknife:${versions["butterKnifeVersion"]}",
             "butterKnifeCompiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}",
             //第三方控件
-            "wenldBanner"        : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}"
+            "wenldBanner"        : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}",
+            "refreshView"        : "com.zt.maven.widget:refreshview:1.0.0"
     ]
 }

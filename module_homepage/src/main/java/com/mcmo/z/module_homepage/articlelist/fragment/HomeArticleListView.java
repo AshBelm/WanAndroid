@@ -1,10 +1,15 @@
 package com.mcmo.z.module_homepage.articlelist.fragment;
 
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.example.refreshview.CustomRefreshView;
 import com.mcmo.z.commonlibrary.mvp.AbsFragmentView;
 import com.mcmo.z.module_homepage.R;
 import com.mcmo.z.module_homepage.net.bean.ArticleData;
@@ -24,7 +29,7 @@ public class HomeArticleListView extends AbsFragmentView {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_articlelist;
+        return R.layout.mhome_fragment_articlelist;
     }
 
     @Override
@@ -36,7 +41,7 @@ public class HomeArticleListView extends AbsFragmentView {
     private void initBanner(View view) {
         banner = view.findViewById(R.id.banner_articlelist);
         DefaultPageIndicator defaultPageIndicator = new DefaultPageIndicator(getContent());
-        defaultPageIndicator.setPageIndicator(new int[]{R.drawable.dot, R.drawable.dot_tran});
+        defaultPageIndicator.setPageIndicator(new int[]{R.drawable.mhome_dot, R.drawable.mhome_dot_tran});
         banner.setIndicatorView(defaultPageIndicator);
         banner.setPageIndicatorAlign(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.CENTER_HORIZONTAL);    //设置指示器位置
     }

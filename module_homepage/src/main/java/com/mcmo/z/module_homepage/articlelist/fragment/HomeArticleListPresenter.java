@@ -2,10 +2,7 @@ package com.mcmo.z.module_homepage.articlelist.fragment;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.mcmo.z.commonlibrary.mvp.AbsFragmentPresenter;
 import com.mcmo.z.commonlibrary.net.ErrorMsg;
