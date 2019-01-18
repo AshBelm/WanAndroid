@@ -47,7 +47,5 @@ public class CollectActivity extends BaseActivity<CollectView> {
                 onBackPressed();
             }
         });
-        if (test != null)
-            ToastUtil.showToastUtil(this, test);
     }
 }

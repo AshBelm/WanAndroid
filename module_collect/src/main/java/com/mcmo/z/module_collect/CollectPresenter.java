@@ -16,7 +16,7 @@ public class CollectPresenter extends AbsActivityPresenter<CollectView> {
         api.getCollectList(0).enqueue(new RetrofitCallback<CollectData>() {
             @Override
             public void onSuccess(CollectData data) {
-                Log.e("aa", "onSuccess: ");
+                getView().setCollectListData(data.datas);
             }
 
             @Override

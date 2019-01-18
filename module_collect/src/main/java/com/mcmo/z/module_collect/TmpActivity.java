@@ -10,6 +10,6 @@ public class TmpActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().build(RouteCons.Collect.COLLECT_LIST).withString("aaa","对了").navigation();
+        ARouter.getInstance().build(RouteCons.Collect.COLLECT_LIST).navigation();
     }
 }
