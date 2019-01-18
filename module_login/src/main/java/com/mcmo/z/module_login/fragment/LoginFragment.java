@@ -11,12 +11,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcmo.z.commonlibrary.busniess.BaseUserInfo;
@@ -26,7 +22,7 @@ import com.mcmo.z.commonlibrary.net.ErrorMsg;
 import com.mcmo.z.commonlibrary.net.RetrofitCallback;
 import com.mcmo.z.commonlibrary.net.RetrofitManager;
 import com.mcmo.z.commonlibrary.utils.ToastUtil;
-import com.mcmo.z.module_login.LoginActivity_MLogin;
+import com.mcmo.z.module_login.LoginActivity;
 import com.mcmo.z.module_login.R;
 import com.mcmo.z.module_login.bean.LoginInfoBean;
 import com.mcmo.z.module_login.net.ServiceApi_MLogin;
@@ -77,10 +73,10 @@ public class LoginFragment extends Fragment {
                         }
                         ToastUtil.showToastUtil(getContext(),"登陆成功");
                         Activity act = getActivity();
-                        if(act != null && act instanceof LoginActivity_MLogin){
+                        if(act != null && act instanceof LoginActivity){
                             BaseUserInfo baseUserInfo = new BaseUserInfo(data.id,data.username,data.icon,data.email,data.type);
                             UserInfoSaver.save(baseUserInfo);
-                            ((LoginActivity_MLogin) act).loginSuccessAndFinish();
+                            ((LoginActivity) act).loginSuccessAndFinish();
                         }
                     }
 
@@ -96,8 +92,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Activity act = getActivity();
-                if(act instanceof LoginActivity_MLogin){
-                    ((LoginActivity_MLogin) act).changeFragmentToRegister();
+                if(act instanceof LoginActivity){
+                    ((LoginActivity) act).changeFragmentToRegister();
                 }
             }
         });

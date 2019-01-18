@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
-public class AbsActivityPresenter<T extends IView> extends AbsPresenter<T> {
+public abstract class AbsActivityPresenter<T extends IView> extends AbsPresenter<T> {
 
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
     }

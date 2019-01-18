@@ -13,6 +13,6 @@ public abstract class AbsPresenter<T extends IView> {
         return absView;
     }
     public abstract Context getContext();
-    public void initData(){}
+    public abstract void initData();
 
 }

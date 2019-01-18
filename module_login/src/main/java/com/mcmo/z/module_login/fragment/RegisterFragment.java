@@ -21,7 +21,7 @@ import com.mcmo.z.commonlibrary.net.RetrofitCallback;
 import com.mcmo.z.commonlibrary.net.RetrofitManager;
 import com.mcmo.z.commonlibrary.utils.LoadingDialog;
 import com.mcmo.z.commonlibrary.utils.ToastUtil;
-import com.mcmo.z.module_login.LoginActivity_MLogin;
+import com.mcmo.z.module_login.LoginActivity;
 import com.mcmo.z.module_login.R;
 import com.mcmo.z.module_login.bean.LoginInfoBean;
 import com.mcmo.z.module_login.net.ServiceApi_MLogin;
@@ -82,9 +82,9 @@ public class RegisterFragment extends Fragment {
                         BaseUserInfo baseUserInfo = new BaseUserInfo(data.id,data.username,data.icon,data.email,data.type);
                         UserInfoSaver.save(baseUserInfo);
                         Activity act = getActivity();
-                        if(act != null && act instanceof LoginActivity_MLogin){
+                        if(act != null && act instanceof LoginActivity){
                             UserInfoSaver.save(baseUserInfo);
-                            ((LoginActivity_MLogin) act).loginSuccessAndFinish();
+                            ((LoginActivity) act).loginSuccessAndFinish();
                         }
                         
                     }

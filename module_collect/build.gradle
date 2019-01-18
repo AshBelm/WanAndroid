@@ -6,7 +6,7 @@ if(isColloctModule.toBoolean()){
 
 android {
     rootProject.ext.setDefaultAndroidConfig isColloctModule.toBoolean(),android
-
+    resourcePrefix "mcollect_"
     defaultConfig {
         versionCode 1
         versionName "1.0"
@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     rootProject.ext.setDefultDependencies dependencies
+    implementation project(':module_login')
 }
