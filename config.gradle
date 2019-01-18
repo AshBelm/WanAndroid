@@ -66,13 +66,15 @@ ext {
             "butterKnifeCompiler": "com.jakewharton:butterknife-compiler:${versions["butterKnifeVersion"]}",
             //第三方控件
             "wenldBanner"        : "com.github.LidongWen:WenldBanner:${versions["wenldBannerVersion"]}",
-            "refreshView"        : "com.zt.maven.widget:refreshview:1.0.0"
+            "smartRefreshLayout" : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1",
+            "smartRefreshHeader" : "com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1",
+            "smartRefreshFooter" : "com.scwang.smartrefresh:SmartRefreshFotter:1.0.5.1"
     ]
     //利用闭包来设置每个module共性的设置
-    setDefaultAndroidConfig ={ isModule,extension ->
+    setDefaultAndroidConfig = { isModule, extension ->
         extension.compileSdkVersion rootProject.ext.compileSdkVersion
-        extension.defaultConfig{
-            if(!isModule){
+        extension.defaultConfig {
+            if (!isModule) {
                 applicationId "${rootProject.ext.applicationId}.${extension.project.getName()}"
             }
             minSdkVersion rootProject.ext.minSdkVersion
@@ -86,18 +88,18 @@ ext {
                 }
             }
         }
-        extension.sourceSets{
-            main{
-                if(isModule){
+        extension.sourceSets {
+            main {
+                if (isModule) {
                     manifest.srcFile 'src/main/module/AndroidManifest.xml'
-                }else{
+                } else {
                     manifest.srcFile 'src/main/AndroidManifest.xml'
                 }
             }
         }
     }
 
-    setDefultDependencies={ extension ->
+    setDefultDependencies = { extension ->
         extension.implementation project(':commonlibrary')
 
         extension.annotationProcessor rootProject.ext.dependencies["arouterComilper"]
