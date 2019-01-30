@@ -7,4 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Minor指竖屏模式下的宽度 -->
+        <!-- 如果有问题可以换成固定dp ，如设计尺寸是360dp那么80%为288dp  -->
+        <item name="android:windowMinWidthMinor">80%</item>
+        <item name="windowFixedWidthMinor">80%</item>
+        <!--<item name="android:labelTextSize">40sp</item>-->
+        <!--<item name="android:keyTextSize">40sp</item>-->
+        <!--<item name="android:textSize">40sp</item>-->
+    </style>
 </resources>

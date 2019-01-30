@@ -1,0 +1,2 @@
+1.今日头条适配导致dialog尺寸错误问题，可以在构建Dialog,添加style.R.style.DialogTheme
+参考链接：https://github.com/JessYanCoding/AndroidAutoSize/issues/1

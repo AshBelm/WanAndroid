@@ -12,6 +12,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcmo.z.commonlibrary.busniess.UserInfoSaver;
 import com.mcmo.z.commonlibrary.constants.RouteCons;
+import com.mcmo.z.commonlibrary.mouduleinterface.CollectService;
+import com.mcmo.z.commonlibrary.mouduleinterface.DefaultSuccessCallBack;
+import com.mcmo.z.commonlibrary.mouduleinterface.ModuleImpCons;
 import com.mcmo.z.commonlibrary.mvp.AbsActivityPresenter;
 import com.mcmo.z.commonlibrary.mvp.BaseActivity;
 import com.mcmo.z.commonlibrary.utils.CookiesStore;
@@ -45,6 +48,25 @@ public class CollectActivity extends BaseActivity<CollectView> {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+        CollectService service = (CollectService) ARouter.getInstance().build(ModuleImpCons.Collect.collect).navigation(this);
+        service.showCollectArticleDialog(new DefaultSuccessCallBack() {
+            @Override
+            public void onSuccess() {
+                ToastUtil.showToastUtil(CollectActivity.this,"success");
+            }
+
+            @Override
+            public void onFailed() {
+                ToastUtil.showToastUtil(CollectActivity.this,"failed");
+
+            }
+
+            @Override
+            public void onManualCancel() {
+                ToastUtil.showToastUtil(CollectActivity.this,"cancel");
+
             }
         });
     }

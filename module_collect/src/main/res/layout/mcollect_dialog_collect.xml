@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/text_size_caption" />
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/second_text_color"
+        android:textSize="@dimen/text_size_subhead" />
+
+    <TextView
+        android:id="@+id/tv_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/text_size_caption" />
+
+    <EditText
+        android:id="@+id/et_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/second_text_color"
+        android:textSize="@dimen/text_size_subhead" />
+
+    <TextView
+        android:id="@+id/tv_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/text_size_caption" />
+
+    <EditText
+        android:id="@+id/et_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/second_text_color"
+        android:textSize="@dimen/text_size_subhead" />
+</LinearLayout>

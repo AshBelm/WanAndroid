@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class ContextHolder {
-    private static ContextHolder instance;
+    private volatile static ContextHolder instance;
     private Application mContext;
     private Activity mTopActivity;
     private int mActivityCount = 0;

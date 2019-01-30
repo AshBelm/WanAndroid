@@ -1,6 +1,8 @@
 package com.mcmo.z.module_collect;
 
 import android.app.Activity;
+import android.support.v4.widget.AutoSizeableTextView;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toolbar;

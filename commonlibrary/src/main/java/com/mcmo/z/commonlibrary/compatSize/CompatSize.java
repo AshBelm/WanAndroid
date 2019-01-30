@@ -18,7 +18,7 @@ public class CompatSize {
     protected Application mApplication;
     private int mDesignDpi;
 
-    private static CompatSize instance;
+    private volatile static CompatSize instance;//双检测的单例模式要加上volatile保证可见性
 
     private CompatSize() {
         mDensityModifier = new DensityModifier();
