@@ -38,6 +38,7 @@ public abstract class BaseActivity<T extends AbsActivityView> extends AppCompatA
         prevInitMVP();
         initMVP();
         postInitMVP();
+
     }
 
     public void prevInitMVP(){
@@ -48,13 +49,21 @@ public abstract class BaseActivity<T extends AbsActivityView> extends AppCompatA
     }
     private void initMVP() {
         iView = providerView();
-        iView.setActivity(this);
+        if(iView!=null){
+            iView.setActivity(this);
+        }
         iPresenter = providerPresenter();
-        iPresenter.setActivity(this);
-        iPresenter.setView(iView);
-        setContentView(iView.getLayoutId());
-        iView.onViewCreated(this);
-        iPresenter.initData();
+        if(iPresenter!=null){
+            iPresenter.setActivity(this);
+            iPresenter.setView(iView);
+        }
+        if(iView!=null){
+            setContentView(iView.getLayoutId());
+            iView.onViewCreated(this);
+        }
+        if(iPresenter!=null){
+            iPresenter.initData();
+        }
     }
 
 

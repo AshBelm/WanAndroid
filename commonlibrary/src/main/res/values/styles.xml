@@ -7,6 +7,39 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!-- toolbar 主题除非设计有要求一般不用设置 -->
+    <style name="ToolBarTheme" parent="Theme.AppCompat.Light">
+        <!-- 设置 toolbar 溢出菜单的文字的颜色 -->
+        <item name="android:textColor">@android:color/black</item>
+        <!-- 设置toolbar 溢出菜单的字体大小-->
+        <item name="android:textSize">12sp</item>
+        <!-- 设置 显示在toolbar上菜单文字的颜色 -->
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <!-- 菜单按钮的图标 -->
+        <!--<item name="actionOverflowButtonStyle">@style/OverFlowIcon</item>-->
+    </style>
+    <!-- toolbar标题 -->
+    <style name="ToolbarTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!-- toolbar副标题-->
+    <style name="ToolbarSubtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+    <!-- toolbar右侧menu效果 -->
+    <style name="OverFlowIcon" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_chevron_left_black_24dp</item>
+    </style>
+    <style name="ToolBarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/white</item><!-- 这里可以改变菜单的背景色 -->
+        <!--<item name="android:actionOverflowMenuStyle">@style/OverflowMenuStyle</item>--><!-- 见values-v21 -->
+    </style>
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--见values-v21-->
+    </style>
+
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorAccent</item>
         <!-- Minor指竖屏模式下的宽度 -->
@@ -17,4 +50,5 @@
         <!--<item name="android:keyTextSize">40sp</item>-->
         <!--<item name="android:textSize">40sp</item>-->
     </style>
+
 </resources>

@@ -1,13 +1,12 @@
 package com.mcmo.z.commonlibrary.base;
 
-import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
 import android.os.StrictMode;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcmo.z.commonlibrary.BuildConfig;
 import com.mcmo.z.commonlibrary.compatSize.CompatSize;
+import com.mcmo.z.commonlibrary.toolbarutil.ToolBarUtil;
 
 public class BaseApplication extends Application {
 
@@ -24,6 +23,7 @@ public class BaseApplication extends Application {
         }
         ARouter.init(this);
         CompatSize.getInstance().init(this, 360);
+        ToolBarUtil.register(this);
     }
 
     private void initStrictMode() {

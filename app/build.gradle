@@ -67,6 +67,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':commonlibrary')
     annotationProcessor rootProject.ext.dependencies["arouterComilper"]
+//    annotationProcessor "android.arch.lifecycle:compiler:1.1.1" // use kapt for Kotlin
+
     if(isLoginModule.toBoolean()){
         implementation project(':module_login')
     }
