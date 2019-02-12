@@ -44,6 +44,11 @@ public class RequestPermissionFragment extends Fragment {
         if (permissions == null || permissions.length == 0) {
             return;
         }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            //如果系统小于6.0直接调用权限授权成功接口
+            cb.onPermissionsAllow(permissions);
+            return;
+        }
         log(permissions);
         PermissionProcess process = new PermissionProcess(permissions, cb);
         checkPermission(process);
@@ -70,17 +75,17 @@ public class RequestPermissionFragment extends Fragment {
             return;
         }
 
-        checkPermission(process,permissions, grantResults);
+        checkPermission(process, permissions, grantResults);
 
         if (process.isAllGranted()) {
             mPermissionProcesses.remove(requestCode);
             process.cb.onPermissionsAllow(process.getGrantedPermissions());
         } else if (process.needGuideToSettings()) {
             //这里如果项目使用了今日头条的适配方案dialog可以使用下面这个style
-            new AlertDialog.Builder(getContext(),R.style.DialogTheme).setMessage("应用需要使用某些权限，请到设置中打开").setPositiveButton(R.string.goto_settings, new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(getContext(), R.style.DialogTheme).setMessage("应用需要使用某些权限，请到设置中打开").setPositiveButton(R.string.goto_settings, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    PermissionHelper.gotoSettings(RequestPermissionFragment.this,requestCode);
+                    PermissionHelper.gotoSettings(RequestPermissionFragment.this, requestCode);
                 }
             }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
@@ -94,7 +99,6 @@ public class RequestPermissionFragment extends Fragment {
             process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
         }
     }
-
 
 
     private int generateKey() {
@@ -114,17 +118,18 @@ public class RequestPermissionFragment extends Fragment {
         ArrayList<String> needTipList = new ArrayList<>();
         String[] permissions = process.permissions;
         for (int i = 0; i < permissions.length; i++) {
-            if(ActivityCompat.checkSelfPermission(getContext(),permissions[i])==PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.checkSelfPermission(getContext(), permissions[i]) == PackageManager.PERMISSION_GRANTED) {
                 grantedList.add(permissions[i]);
-            }else{
+            } else {
                 deniedList.add(permissions[i]);
-                if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),permissions[i])){
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions[i])) {
                     needTipList.add(permissions[i]);
                 }
             }
         }
-        process.setResult(grantedList,deniedList,null,needTipList);
+        process.setResult(grantedList, deniedList, null, needTipList);
     }
+
     private void checkPermission(PermissionProcess process, @NonNull String[] permissions, @NonNull int[] grantResults) {
         ArrayList<String> grantedList = new ArrayList<>();
         ArrayList<String> deniedList = new ArrayList<>();
@@ -140,7 +145,7 @@ public class RequestPermissionFragment extends Fragment {
                 }
             }
         }
-        process.setResult(grantedList, deniedList, donotAskAgain,null);
+        process.setResult(grantedList, deniedList, donotAskAgain, null);
     }
 
 
@@ -153,16 +158,16 @@ public class RequestPermissionFragment extends Fragment {
         }
         mPermissionProcesses.remove(requestCode);
         checkPermission(process);
-        if(process.isAllGranted()){
+        if (process.isAllGranted()) {
             process.cb.onPermissionsAllow(process.permissions);
-        }else{
-            process.cb.onPermissionDeny(process.getGrantedPermissions(),process.getDeniedPermissions());
+        } else {
+            process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
         }
 
     }
 
     private void log(String[] permissons) {
-        if(DEBUG){
+        if (DEBUG) {
             for (int i = 0; i < permissons.length; i++) {
                 boolean granted = ActivityCompat.checkSelfPermission(getContext(), permissons[i]) == PackageManager.PERMISSION_GRANTED;
                 boolean rationale = ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissons[i]);
