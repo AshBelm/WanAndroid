@@ -10,6 +10,7 @@ import android.view.View;
 import com.mcmo.z.commonlibrary.permisson.PermissionCallback;
 import com.mcmo.z.commonlibrary.permisson.PermissionHelper;
 import com.mcmo.z.commonlibrary.permisson.RequestPermissionFragment;
+import com.mcmo.z.commonlibrary.permisson.SimplePermissionCallback;
 import com.mcmo.z.wanandroid.net.TestApi;
 
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
     public void onButtonClick(View view) {
         PermissionHelper.newInstance(this).requestPermissions(new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.READ_CALENDAR
-        }, new PermissionCallback() {
+        }, new SimplePermissionCallback() {
             @Override
             public void onPermissionsAllow(String[] permissions) {
                 Log.e("aaa", "onPermissionsAllow: "+ Arrays.toString(permissions) );

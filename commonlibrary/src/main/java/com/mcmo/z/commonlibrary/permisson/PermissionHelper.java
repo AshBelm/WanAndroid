@@ -21,6 +21,9 @@ public class PermissionHelper {
     public static PermissionHelper newInstance(@NonNull FragmentActivity activity) {
         return new PermissionHelper(activity);
     }
+    public static PermissionHelper newInstance(@NonNull Fragment fragment){
+        return new PermissionHelper(fragment.getActivity());
+    }
 
     private RequestPermissionFragment getRequestPermissionFragment() {
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(RequestPermissionFragment.TAG);

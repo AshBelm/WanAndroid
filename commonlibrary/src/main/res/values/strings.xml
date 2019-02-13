@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">commonLibrary</string>
     <string name="cancel">取消</string>
+    <string name="i_know">知道了</string>
+    <string name="rationale_tip">为保证功能正常运行，请授权相应权限</string>
     <string name="goto_settings">去设置</string>
+    <string name="goto_settings_tip">此功能需要相应权限才能使用，请到&#160;设置->应用->当前应用->权限管理&#160;中开启。</string>
 </resources>

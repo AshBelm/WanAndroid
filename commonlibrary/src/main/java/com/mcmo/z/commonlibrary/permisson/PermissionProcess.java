@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PermissionProcess {
     protected String[] permissions;
     protected PermissionCallback cb;
+
     private String[] grantedPermissions;//已授权
     private String[] deniedPermissions;//未授权
     private String[] donotAskAgainPermissions;//选择了不再提示的权限，在权限申请回调里面能判断出来
@@ -54,7 +55,7 @@ public class PermissionProcess {
      * @return
      */
     public boolean isAllGranted() {
-        return deniedPermissions.length == 0;
+        return deniedPermissions != null && deniedPermissions.length == 0;
     }
 
     /**
@@ -63,8 +64,11 @@ public class PermissionProcess {
      * @return
      */
     public boolean needGuideToSettings() {
-        return donotAskAgainPermissions.length > 0;
+        return donotAskAgainPermissions != null && donotAskAgainPermissions.length > 0;
     }
 
+    public boolean needRationale() {
+        return needTipPermissions != null && needTipPermissions.length > 0;
+    }
 
 }

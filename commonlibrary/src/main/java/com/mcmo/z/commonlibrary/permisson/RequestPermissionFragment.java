@@ -1,6 +1,7 @@
 package com.mcmo.z.commonlibrary.permisson;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -24,7 +25,7 @@ public class RequestPermissionFragment extends Fragment {
     public static final boolean DEBUG = false;
     public static final String TAG = "RequestPermissonFragmen";
     private Random mRandom = new Random();
-    private SparseArray<PermissionProcess> mPermissionProcesses = new SparseArray<>();
+    private SparseArray<PermissionProcess> mPermissionProcesses = new SparseArray<>();//保存所有的请求
 
     public RequestPermissionFragment() {
     }
@@ -50,17 +51,61 @@ public class RequestPermissionFragment extends Fragment {
             return;
         }
         log(permissions);
-        PermissionProcess process = new PermissionProcess(permissions, cb);
+        final PermissionProcess process = new PermissionProcess(permissions, cb);
         checkPermission(process);
         if (process.isAllGranted()) {
             if (cb != null) {
                 cb.onPermissionsAllow(permissions);
             }
         } else {
-            int requestCode = generateKey();
-            mPermissionProcesses.put(requestCode, process);
-            requestPermissions(permissions, requestCode);
+            PermissionDialogBuilder builder = null;
+            if (process.needRationale() && process.cb != null) {
+                builder = process.cb.onShowRationale(getRationaleDialogBuilder(process), process.getNeedTipPermissions());
+            }
+            if (builder != null) {
+                builder.createDialog(getContext()).show();
+            } else {
+                addAndRequestProcess(process);
+            }
         }
+    }
+
+    private PermissionDialogBuilder getRationaleDialogBuilder(final PermissionProcess process) {
+        return new PermissionDialogBuilder(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                addAndRequestProcess(process);
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (process.cb != null) {
+                    process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
+                }
+            }
+        });
+    }
+
+    private PermissionDialogBuilder getSettingsTipDialogBuilder(final PermissionProcess process, final int requestCode) {
+        return new PermissionDialogBuilder(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PermissionHelper.gotoSettings(RequestPermissionFragment.this, requestCode);
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (process.cb != null) {
+                    process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
+                }
+            }
+        });
+    }
+
+    private void addAndRequestProcess(PermissionProcess process) {
+        int requestCode = generateKey();
+        mPermissionProcesses.put(requestCode, process);
+        requestPermissions(process.permissions, requestCode);
     }
 
     @Override
@@ -71,6 +116,7 @@ public class RequestPermissionFragment extends Fragment {
 
     private void handleResult(final int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         final PermissionProcess process = mPermissionProcesses.get(requestCode);
+        if (process != null) mPermissionProcesses.remove(requestCode);
         if (process == null || process.cb == null) {
             return;
         }
@@ -78,25 +124,18 @@ public class RequestPermissionFragment extends Fragment {
         checkPermission(process, permissions, grantResults);
 
         if (process.isAllGranted()) {
-            mPermissionProcesses.remove(requestCode);
             process.cb.onPermissionsAllow(process.getGrantedPermissions());
-        } else if (process.needGuideToSettings()) {
-            //这里如果项目使用了今日头条的适配方案dialog可以使用下面这个style
-            new AlertDialog.Builder(getContext(), R.style.DialogTheme).setMessage("应用需要使用某些权限，请到设置中打开").setPositiveButton(R.string.goto_settings, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    PermissionHelper.gotoSettings(RequestPermissionFragment.this, requestCode);
-                }
-            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    mPermissionProcesses.remove(requestCode);
-                    process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
-                }
-            }).show();
         } else {
-            mPermissionProcesses.remove(requestCode);
-            process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
+            PermissionDialogBuilder builder = null;
+            if (process.needGuideToSettings()) {
+                builder = process.cb.onShowSettingsTip(getSettingsTipDialogBuilder(process, requestCode), process.getDonotAskAgainPermissions());
+            }
+            if (builder != null) {
+                mPermissionProcesses.put(requestCode, process);//把这个请求流程再次加入到集合，因为onActivityResult中要再次使用
+                builder.createDialog(getContext()).show();
+            } else {
+                process.cb.onPermissionDeny(process.getGrantedPermissions(), process.getDeniedPermissions());
+            }
         }
     }
 
@@ -153,10 +192,10 @@ public class RequestPermissionFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         PermissionProcess process = mPermissionProcesses.get(requestCode);
+        if (process != null) mPermissionProcesses.remove(requestCode);
         if (process == null || process.cb == null) {
             return;
         }
-        mPermissionProcesses.remove(requestCode);
         checkPermission(process);
         if (process.isAllGranted()) {
             process.cb.onPermissionsAllow(process.permissions);
