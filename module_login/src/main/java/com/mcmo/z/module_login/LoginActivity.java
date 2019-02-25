@@ -4,22 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.android.arouter.facade.Postcard;
-import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcmo.z.commonlibrary.constants.RouteCons;
 import com.mcmo.z.commonlibrary.mvp.AbsActivityPresenter;
-import com.mcmo.z.commonlibrary.mvp.BaseActivity;
-
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Set;
+import com.mcmo.z.commonlibrary.base.BaseActivity;
 
 @Route(path = RouteCons.Login.ACTIVITY)
 public class LoginActivity extends BaseActivity<LoginView_MLogin> {

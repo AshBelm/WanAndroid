@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 
 import com.mcmo.z.commonlibrary.mvp.AbsFragmentPresenter;
+import com.mcmo.z.commonlibrary.mvp.MvpPresenter;
 import com.mcmo.z.commonlibrary.net.ErrorMsg;
 import com.mcmo.z.commonlibrary.net.RetrofitCallback;
 import com.mcmo.z.commonlibrary.net.RetrofitManager;
@@ -19,40 +20,40 @@ import com.mcmo.z.module_homepage.view.ArticleAdapter;
 import java.util.List;
 
 
-public class HomeArticleListPresenter extends AbsFragmentPresenter<HomeArticleListView> {
+public class HomeArticleListPresenter extends MvpPresenter<HomeArticleListView> {
     private ArticleListViewModel mArticleListVM;
-    @Override
-    public void initData() {
-        super.initData();
 
+    @Override
+    public void onCreate() {
         bindingViewModel();
 
-        getView().setItemClickListener(new ArticleAdapter.OnItemClickListener() {
+        getIView().setItemClickListener(new ArticleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ArticleData articleData, int position) {
-                ToastUtil.showToastUtil(getContext(),articleData.title);
+                ToastUtil.showToastUtil(getContext(), articleData.title);
             }
         });
-        if(mArticleListVM.getBannerData().getValue()==null){
+        if (mArticleListVM.getBannerData().getValue() == null) {
             refreshBanner();
         }
-        if(mArticleListVM.getArticleListLiveData().getValue()==null){
+        if (mArticleListVM.getArticleListLiveData().getValue() == null) {
             refreshArticleList();
         }
     }
+
 
     private void bindingViewModel() {
         mArticleListVM = ViewModelProviders.of(getFragment()).get(ArticleListViewModel.class);
         mArticleListVM.getArticleListLiveData().observe(getFragment(), new Observer<List<ArticleData>>() {
             @Override
             public void onChanged(@Nullable List<ArticleData> articleData) {
-                getView().setArticleData(articleData);
+                getIView().setArticleData(articleData);
             }
         });
         mArticleListVM.getBannerData().observe(getFragment(), new Observer<List<BannerData>>() {
             @Override
             public void onChanged(@Nullable List<BannerData> bannerData) {
-                getView().setBannerData(bannerData);
+                getIView().setBannerData(bannerData);
             }
         });
     }

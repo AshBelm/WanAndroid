@@ -1,4 +1,4 @@
-package com.mcmo.z.commonlibrary.mvp;
+package com.mcmo.z.commonlibrary.base;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,73 +10,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.mcmo.z.commonlibrary.mvp.AbsActivityPresenter;
+import com.mcmo.z.commonlibrary.mvp.AbsActivityView;
+import com.mcmo.z.commonlibrary.mvp.MVPActivity;
 
 import java.util.HashMap;
 
-public abstract class BaseActivity<T extends AbsActivityView> extends AppCompatActivity {
-    private T iView;
-    private AbsActivityPresenter<T> iPresenter;
-    public abstract AbsActivityPresenter<T> providerPresenter();
-    public abstract T providerView();
-
+public abstract class BaseActivity extends MVPActivity {
     private Fragment mCurFragment;
     private HashMap<String, String> fragmentMap;//key = tag ,value = route
-
-
-    public T getIView() {
-        return iView;
-    }
-
-    public AbsActivityPresenter<T> getIPresenter() {
-        return iPresenter;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFragmentSettings();
-        prevInitMVP();
-        initMVP();
-        postInitMVP();
 
-    }
-
-    public void prevInitMVP(){
-        // TODO: 2019/1/7
-    }
-    public void postInitMVP(){
-        // TODO: 2019/1/7
-    }
-    private void initMVP() {
-        iView = providerView();
-        if(iView!=null){
-            iView.setActivity(this);
-        }
-        iPresenter = providerPresenter();
-        if(iPresenter!=null){
-            iPresenter.setActivity(this);
-            iPresenter.setView(iView);
-        }
-        if(iView!=null){
-            setContentView(iView.getLayoutId());
-            iView.onViewCreated(this);
-        }
-        if(iPresenter!=null){
-            iPresenter.initData();
-        }
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        iPresenter.onSaveInstanceState(outState, outPersistentState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        iPresenter.onRestoreInstanceState(savedInstanceState);
     }
 
     /**

@@ -26,6 +26,8 @@ public class MvpActivityHelper implements IMvp{
         v.setContext(activity);
         v.onCreate();
         p.onCreate();
+        //清除不需要的引用
+        activity = null;
     }
 
     @Override

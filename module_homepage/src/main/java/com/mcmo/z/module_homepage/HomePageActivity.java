@@ -1,41 +1,25 @@
 package com.mcmo.z.module_homepage;
 
 import android.os.Bundle;
-import android.os.Trace;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.mcmo.z.commonlibrary.base.BaseActivity;
 import com.mcmo.z.commonlibrary.constants.RouteCons;
-import com.mcmo.z.commonlibrary.mvp.AbsActivityPresenter;
-import com.mcmo.z.commonlibrary.mvp.BaseActivity;
+import com.mcmo.z.commonlibrary.mvp.MVPActivity;
 
-public class HomePageActivity extends BaseActivity<HomePageView> {
+public class HomePageActivity extends BaseActivity {
     private final String TAG_ARTICLELIST="articlelist";
-    @Override
-    public AbsActivityPresenter<HomePageView> providerPresenter() {
-        return new HomePagePresenter();
-    }
-
-    @Override
-    public HomePageView providerView() {
-        return new HomePageView();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState!=null){
-            Log.e("aa", "onCreate: "+savedInstanceState.getString("aaa") );
-        }else{
-            Log.e("aa", "onCreate: meiyou");
-        }
+        setViewAndPresenter(new HomePageView(),new HomePagePresenter());
         translucentStatusBar();
         addFragmentRoute(TAG_ARTICLELIST,RouteCons.Home.ARTICLE_LIST_FRAGMENT);
         changeFragment(R.id.fragment_container,TAG_ARTICLELIST);
-//        Fragment fragment = (Fragment) ARouter.getInstance().build(RouteCons.Home.ARTICLE_LIST_FRAGMENT).navigation();
-//        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fragment,"articleList").commitAllowingStateLoss();
     }
 
     @Override
