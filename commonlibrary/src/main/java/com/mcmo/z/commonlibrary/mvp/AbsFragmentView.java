@@ -12,7 +12,7 @@ public abstract class AbsFragmentView implements IView {
         this.fragment = fragment;
     }
     @Override
-    public Context getContent() {
+    public Context getContext() {
         return fragment.getContext();
     }
     public abstract void onViewCreated(View view);

@@ -9,7 +9,7 @@ public abstract class AbsActivityView implements IView{
     protected void setActivity(Activity activity) {
         this.activity = activity;
     }
-    public Context getContent(){
+    public Context getContext(){
         return activity;
     }
 
