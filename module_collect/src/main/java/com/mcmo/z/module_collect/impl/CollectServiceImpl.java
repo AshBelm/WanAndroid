@@ -7,13 +7,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.mcmo.z.commonlibrary.base.ContextHolder;
-import com.mcmo.z.commonlibrary.mouduleinterface.CollectService;
-import com.mcmo.z.commonlibrary.mouduleinterface.DefaultSuccessCallBack;
-import com.mcmo.z.commonlibrary.mouduleinterface.ModuleImpCons;
+import com.mcmo.z.commonlibrary.common.ContextHolder;
+import com.mcmo.z.module.baselibrary.mouduleinterface.CollectService;
+import com.mcmo.z.module.baselibrary.mouduleinterface.DefaultSuccessCallBack;
+import com.mcmo.z.module.baselibrary.mouduleinterface.ModuleImpCons;
 import com.mcmo.z.commonlibrary.utils.ToastUtil;
 import com.mcmo.z.module_collect.R;
 

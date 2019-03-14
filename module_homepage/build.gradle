@@ -5,24 +5,13 @@ if(isHomeModule.toBoolean()){
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    rootProject.ext.setDefaultAndroidConfig isHomeModule.toBoolean(),android
+    resourcePrefix "mhome_"
 
     defaultConfig {
-        if(!isLoginModule.toBoolean()){
-            applicationId "com.mcmo.z.wanandroid.module_homepage"
-        }
-        resourcePrefix "mhome_"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
 
     buildTypes {
@@ -31,24 +20,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets{
-        main{
-            if(isHomeModule.toBoolean()){
-                manifest.srcFile 'src/main/module/AndroidManifest.xml'
-            }else{
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':commonlibrary')
-    annotationProcessor rootProject.ext.dependencies["arouterComilper"]
-    annotationProcessor rootProject.ext.dependencies["butterKnifeCompiler"]
-
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    rootProject.ext.setDefultDependencies dependencies
 }

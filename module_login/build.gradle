@@ -5,49 +5,18 @@ if(isLoginModule.toBoolean()){
 }
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    rootProject.ext.setDefaultAndroidConfig isLoginModule.toBoolean(),android
     resourcePrefix "mlogin_"//资源命名需求添加前缀，如不添加会报错
     defaultConfig {
-        if(!isLoginModule.toBoolean()){
-            applicationId "com.mcmo.z.wanandroid.module_login"
-        }
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    sourceSets{
-        main{
-            if(isLoginModule.toBoolean()){
-                manifest.srcFile 'src/main/module/AndroidManifest.xml'
-            }else{
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-            }
-        }
-    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':commonlibrary')
-//    api rootProject.ext.dependencies["arouter"]
-    annotationProcessor rootProject.ext.dependencies["arouterComilper"]
+    rootProject.ext.setDefultDependencies dependencies
     //测试相关
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["test"]
@@ -57,6 +26,4 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
     }
-    androidTestImplementation rootProject.ext.dependencies["test_rule"]
-    //
 }

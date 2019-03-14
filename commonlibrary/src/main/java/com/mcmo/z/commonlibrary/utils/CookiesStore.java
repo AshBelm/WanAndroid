@@ -3,12 +3,11 @@ package com.mcmo.z.commonlibrary.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.mcmo.z.commonlibrary.base.ContextHolder;
+import com.mcmo.z.commonlibrary.common.ContextHolder;
 
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.WeakHashMap;
 
 public class CookiesStore {
     private static String NAME = "MCMO_WANANDROID_USER_COOKIE";

@@ -4,11 +4,10 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 
-import com.mcmo.z.commonlibrary.mvp.AbsFragmentPresenter;
 import com.mcmo.z.commonlibrary.mvp.MvpPresenter;
 import com.mcmo.z.commonlibrary.net.ErrorMsg;
 import com.mcmo.z.commonlibrary.net.RetrofitCallback;
-import com.mcmo.z.commonlibrary.net.RetrofitManager;
+import com.mcmo.z.module.baselibrary.net.RetrofitManager;
 import com.mcmo.z.commonlibrary.utils.ToastUtil;
 import com.mcmo.z.module_homepage.articlelist.viewmodel.ArticleListViewModel;
 import com.mcmo.z.module_homepage.net.ServiceApi_HomePage;

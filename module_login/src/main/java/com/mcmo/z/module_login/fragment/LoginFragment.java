@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,10 @@ import android.widget.EditText;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.mcmo.z.commonlibrary.busniess.BaseUserInfo;
 import com.mcmo.z.commonlibrary.busniess.UserInfoSaver;
-import com.mcmo.z.commonlibrary.constants.RouteCons;
+import com.mcmo.z.module.baselibrary.constants.RouteCons;
 import com.mcmo.z.commonlibrary.net.ErrorMsg;
 import com.mcmo.z.commonlibrary.net.RetrofitCallback;
-import com.mcmo.z.commonlibrary.net.RetrofitManager;
+import com.mcmo.z.module.baselibrary.net.RetrofitManager;
 import com.mcmo.z.commonlibrary.utils.ToastUtil;
 import com.mcmo.z.module_login.LoginActivity;
 import com.mcmo.z.module_login.R;
@@ -97,40 +95,6 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
-        RecyclerView lv = view.findViewById(R.id.lv);
-        lv.setLayoutManager(new LinearLayoutManager(getContext()));
-        lv.setAdapter(new LvAdapter());
 
-    }
-    private class LvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-        @NonNull
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            Button button = new Button(viewGroup.getContext());
-            return new MyVH(button);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-            Button btn = (Button) viewHolder.itemView;
-            btn.setText(i+"Button");
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ToastUtil.showToastUtil(getContext(),i+"");
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return 10;
-        }
-    }
-    private class MyVH extends RecyclerView.ViewHolder{
-        public MyVH(@NonNull View itemView) {
-            super(itemView);
-        }
     }
 }

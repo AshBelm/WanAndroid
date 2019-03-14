@@ -1,6 +1,6 @@
 package com.mcmo.z.module_login;
 
-import com.mcmo.z.commonlibrary.base.BaseApplication;
+import com.mcmo.z.module.baselibrary.base.BaseApplication;
 
 public class LoginApplication extends BaseApplication {
     @Override

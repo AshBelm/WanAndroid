@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:targetApi="lollipop" android:drawable="@drawable/mhome_ic_mine">
+    <target
+        android:name="firstHLine"
+        android:animation="@animator/mhome_default_show" />
+    <target
+        android:name="true"
+        android:animation="@animator/mhome_anim_no_pass_true" />
+    <target
+        android:name="circleTop"
+        android:animation="@animator/mhome_anim_no_pass_circle" />
+    <target
+        android:name="circleBouttom"
+        android:animation="@animator/mhome_default_gone" />
+    <target
+        android:name="secondHLine"
+        android:animation="@animator/mhome_default_gone" />
+</animated-vector>

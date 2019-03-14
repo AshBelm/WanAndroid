@@ -1,6 +1,5 @@
 package com.mcmo.z.module_homepage.articlelist.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.mcmo.z.commonlibrary.mvp.MvpView;
+import com.mcmo.z.commonlibrary.view.SpaceDecoration;
 import com.mcmo.z.module_homepage.R;
 import com.mcmo.z.module_homepage.net.bean.ArticleData;
 import com.mcmo.z.module_homepage.net.bean.BannerData;
@@ -51,6 +51,10 @@ public class HomeArticleListView extends MvpView {
         recyclerView = view.findViewById(R.id.rv_articlelist);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mArticleAdapter = new ArticleAdapter(null);
+        SpaceDecoration decoration = new SpaceDecoration(getContext().getResources().getDrawable(R.drawable.divider), SpaceDecoration.VERTICAL);//getContext().getResources().getDrawable(R.drawable.divider)
+        decoration.setStartSpace(40);
+        decoration.setEndSpace(100);
+        recyclerView.addItemDecoration(decoration);
         recyclerView.setAdapter(mArticleAdapter);
     }
 

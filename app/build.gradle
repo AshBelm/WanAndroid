@@ -18,8 +18,8 @@ android {
 //            abiFilters 'armeabi'
 //        }
     }
-    signingConfigs{
-        release{
+    signingConfigs {
+        release {
             keyAlias 'ash'
             keyPassword 'zw27516425'
             storeFile file('E:/Store/keystore/wanandroid.jks')
@@ -65,14 +65,18 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':commonlibrary')
+    implementation project(':baselibrary')
     annotationProcessor rootProject.ext.dependencies["arouterComilper"]
-//    annotationProcessor "android.arch.lifecycle:compiler:1.1.1" // use kapt for Kotlin
-
-    if(isLoginModule.toBoolean()){
+    //    annotationProcessor "android.arch.lifecycle:compiler:1.1.1" // use kapt for Kotlin
+    if (isLoginModule.toBoolean()) {
         implementation project(':module_login')
     }
+    if (isHomeModule.toBoolean()) {
+        implementation project(':module_homepage')
+    }
+    if (isColloctModule.toBoolean()) {
+        implementation project(':module_collect')
+    }
     testImplementation rootProject.ext.dependencies["junit"]
-
-//    implementation "com.android.support:multidex:1.0.1" // 多dex配置
+    //    implementation "com.android.support:multidex:1.0.1" // 多dex配置
 }

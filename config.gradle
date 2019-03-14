@@ -100,7 +100,7 @@ ext {
     }
 
     setDefultDependencies = { extension ->
-        extension.implementation project(':commonlibrary')
+        extension.implementation project(':baselibrary')
 
         extension.annotationProcessor rootProject.ext.dependencies["arouterComilper"]
         extension.annotationProcessor rootProject.ext.dependencies["butterKnifeCompiler"]

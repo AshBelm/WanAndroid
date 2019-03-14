@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.mcmo.z.commonlibrary.constants.RouteCons;
-import com.mcmo.z.commonlibrary.mvp.AbsFragmentPresenter;
-import com.mcmo.z.commonlibrary.base.BaseFragment;
+import com.mcmo.z.module.baselibrary.constants.RouteCons;
+import com.mcmo.z.module.baselibrary.base.BaseFragment;
 
 @Route(path = RouteCons.Home.ARTICLE_LIST_FRAGMENT)
 public class HomeArticleListFragment extends BaseFragment{

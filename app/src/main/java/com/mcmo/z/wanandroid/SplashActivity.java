@@ -1,17 +1,16 @@
 package com.mcmo.z.wanandroid;
 
 import android.Manifest;
-import android.support.v4.app.Fragment;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.mcmo.z.commonlibrary.permisson.PermissionCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.mcmo.z.commonlibrary.permisson.PermissionHelper;
-import com.mcmo.z.commonlibrary.permisson.RequestPermissionFragment;
 import com.mcmo.z.commonlibrary.permisson.SimplePermissionCallback;
-import com.mcmo.z.wanandroid.net.TestApi;
+import com.mcmo.z.module.baselibrary.constants.RouteCons;
 
 import java.util.Arrays;
 
@@ -21,8 +20,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        TestApi api = new TestApi();
-        api.getBanner();
+//        TestApi api = new TestApi();
+//        api.getBanner();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ARouter.getInstance().build(RouteCons.Home.ACTIVITY).navigation();
+            }
+        },2000);
     }
 
     public void onButtonClick(View view) {

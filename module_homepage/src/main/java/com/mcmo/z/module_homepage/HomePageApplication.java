@@ -1,8 +1,6 @@
 package com.mcmo.z.module_homepage;
 
-import android.os.StrictMode;
-
-import com.mcmo.z.commonlibrary.base.BaseApplication;
+import com.mcmo.z.module.baselibrary.base.BaseApplication;
 
 public class HomePageApplication extends BaseApplication {
     @Override

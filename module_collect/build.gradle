@@ -23,5 +23,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     rootProject.ext.setDefultDependencies dependencies
-    implementation project(':module_login')
+    if (isLoginModule.toBoolean()) {
+        implementation project(':module_login')
+    }
 }

@@ -2,14 +2,13 @@ package com.mcmo.z.module_homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.mcmo.z.commonlibrary.base.BaseActivity;
-import com.mcmo.z.commonlibrary.constants.RouteCons;
-import com.mcmo.z.commonlibrary.mvp.MVPActivity;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.mcmo.z.module.baselibrary.base.BaseActivity;
+import com.mcmo.z.module.baselibrary.constants.RouteCons;
+
+@Route(path = RouteCons.Home.ACTIVITY)
 public class HomePageActivity extends BaseActivity {
     private final String TAG_ARTICLELIST="articlelist";
 
@@ -19,22 +18,26 @@ public class HomePageActivity extends BaseActivity {
         setViewAndPresenter(new HomePageView(),new HomePagePresenter());
         translucentStatusBar();
         addFragmentRoute(TAG_ARTICLELIST,RouteCons.Home.ARTICLE_LIST_FRAGMENT);
-        changeFragment(R.id.fragment_container,TAG_ARTICLELIST);
+        changeFragment(TAG_ARTICLELIST);
     }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("aaa","hahaha");
+    private void changeFragment(String tag){
+        changeFragment(R.id.fragment_container,tag);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if(savedInstanceState!=null){
-            Log.e("aa", "onRestoreInstanceState: "+savedInstanceState.getString("aaa") );
-        }else{
-            Log.e("aa", "onRestoreInstanceState: meiyou");
+        String prevFragmentTag = savedInstanceState.getString(KEY_PREV_FRAGMENT);
+        if (prevFragmentTag != null && prevFragmentTag.length() > 0) {
+            changeFragment(prevFragmentTag);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (getCurFragment() != null) {
+            outState.putString(KEY_PREV_FRAGMENT, getCurFragment().getTag());
         }
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:targetApi="lollipop" android:drawable="@drawable/mhome_ic_mine">
+    <target
+        android:name="true"
+        android:animation="@animator/mhome_default_gone" />
+    <target
+        android:name="circleTop"
+        android:animation="@animator/mhome_default_gone" />
+    <target
+        android:name="secondHLine"
+        android:animation="@animator/mhome_anim3_first_line_gone" />
+    <target
+        android:name="circleBouttom"
+        android:animation="@animator/mhome_anim3_back_circle_buttom" />
+    <target
+        android:name="circleBouttom"
+        android:animation="@animator/mhome_anim3_back_buttom_circle" />
+    <target
+        android:name="firstHLine"
+        android:animation="@animator/mhome_anim3_back_first_line" />
+</animated-vector>

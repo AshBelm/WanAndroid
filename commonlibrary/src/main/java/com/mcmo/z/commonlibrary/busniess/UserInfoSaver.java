@@ -3,7 +3,7 @@ package com.mcmo.z.commonlibrary.busniess;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.mcmo.z.commonlibrary.base.ContextHolder;
+import com.mcmo.z.commonlibrary.common.ContextHolder;
 
 public class UserInfoSaver {
     private static final String NAME = "MCMO_WANANDROID_USER_DATA";
